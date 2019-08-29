@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <title>LUMOS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Import jquery.min.js -->
+        <script src="js/jquery/dist/jquery.min.js"></script>
+        <!-- Import T-map -->
+        <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=cadda216-ac54-435a-a8ea-a32ba3bb3356"></script>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+
+        <!-- Import -->
+        <link type="text/css" rel="stylesheet" href="css/t-map.css"  media="screen,projection"/>
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <script src="js/geolocation.js"></script>
+        <script type="text/javascript" src="../js/qwebchannel.js"></script>
+        <script type="text/javascript" src="../js/Lumos.js"></script>
+    </head>
+
+    <body>
+
+        <nav style="background-image: url('img/nav_img.jpg');">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center"> LUMOS</a>
+            </div>
+        </nav>
+
+        <div class="row">
+        <!-- T-Map 지도 화면 -->
+            <div id="map_div"></div>
+
+            <form class="col offset-s9 s3" style="margin-top: 6%;">
+                <div class="row">
+                    <div class="input-field col s12" >
+                        <input type="text" id="start" />
+                        <div class="row">
+                            <input class="waves-effect waves-light btn col s6" type="button" style="background-color: rgba(250, 170, 50, 0.5);"
+                            value="출발지 등록" onclick="search('#start')">
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="end" />
+                        <div class="row">
+                            <input class="waves-effect waves-light btn col s6" style="background-color: rgba(250, 170, 50, 0.5);"
+                            type="button" value="도착지 등록" onclick="search('#end')">
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="submit col s12">
+                        <button class="waves-effect waves-light btn" style="background-color: red;"
+                        type="button" onclick="go()">
+                                <i class="material-icons right">send</i>경로 탐색
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="result col s3">
+                <p id="result" class="center-align"></p>
+                <p id="result1" class="center-align"></p>
+                <p id="result2" class="center-align"></p>
+                <p id="result3" class="center-align"></p>
+            </div>
+        </div>
+
+
+
+
+        <!-- Import materialize.min.js -->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script>
+            $(document).ready(() => {
+                initTmap();
+                $("#map_div").attr("style", "height:800px; width: 900px;");
+                Materialize.updateTextFields();
+            });
+        </script>
+    </body>
+</html>
